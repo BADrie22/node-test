@@ -1,0 +1,43 @@
+<!-- views/order.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Details</title>
+  </head>
+  <body>
+    <h1>Order Details</h1>
+    <p>Order ID: <%= order.id %></p>
+    <p>Amount: <%= order.amount %></p>
+    <p>Currency: <%= order.currency %></p>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      var options = {
+        key: "<%= order.key %>",
+        amount: "<%= order.amount %>",
+        currency: "<%= order.currency %>",
+        name: "Your Company Name",
+        description: "Payment for Your Product/Service",
+        order_id: "<%= order.id %>",
+        handler: function (response) {
+          alert("Payment Successful!");
+          console.log(response);
+        },
+        prefill: {
+          name: "Tu BSDK",
+          email: "niggatestin42069@gmail.com",
+          contact: "+91 95384 39765",
+        },
+        theme: {
+          color: "#277eac",
+        },
+      };
+
+      var rzp = new Razorpay(options);
+      rzp.open();
+    </script>
+  </body>
+</html>

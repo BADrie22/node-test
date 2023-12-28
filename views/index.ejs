@@ -1,0 +1,24 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Razorpay Payment</title>
+</head>
+<body>
+  <h1>Razorpay Payment Demo</h1>
+  <form action="/create-order" method="post">
+    <label for="amount">Amount (INR):</label>
+    <input type="number" name="amount" required>
+    <button type="submit">Pay</button>
+  </form>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    var razorpay_key_id = '<%= razorpay_key_id %>';
+  </script>
+  <script src="/js/razorpay.js"></script>
+</body>
+</html>
